@@ -1,0 +1,3 @@
+<tag_0>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget tortor odio. <tag_1> Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean vel orci volutpat, varius risus quis, accumsan dui. <tag_2>

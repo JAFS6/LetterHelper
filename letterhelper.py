@@ -1,39 +1,48 @@
 print "\nLetter Helper"
 
-#read template file
+# read template file
 
 file = open("letter_template.txt",'r')
 template = file.read()
 
-#print "\nTemplate:\n" + template + "\n"
+# read tags file
+with open("tags.txt",'r') as f:
+    tags = f.readlines()
 
-#read data file
+tags = [x.strip() for x in tags]
+
+# read data file
 with open("data.txt",'r') as f:
     data_content = f.readlines()
 
 data_content = [x.strip() for x in data_content]
 
-num_letters = len(data_content) / 2
+num_tags = len(tags)
+num_letters = len(data_content) / num_tags
 
 print "\n"
+
+# generate letters
 
 index = 0
 
 for i in range(0,num_letters):
 
-    out_file = str(i) + ". " + data_content[index] + ".txt"
+    # take the template
 
-    #find and replace content
-    letter = template.replace("<business_name>", data_content[index])
-    letter = letter.replace("<sector>", data_content[index+1])
+    letter = template
 
-    #print "\nLetter: \n" + letter + "\n"
+    # find and replace tags
+    for j in range(0, num_tags):
+        letter = letter.replace(tags[j], data_content[index+j])
 
+    # write the generated letter
+    out_file = str(i+1) + ". " + data_content[index] + ".txt"
     file = open(out_file,'w')
     file.write(letter)
     file.close()
     print "Letter " + str(i+1) + " generated.\n"
 
-    index += 2
+    index += num_tags
 
-input("Press any key to exit...")
+input("Press Enter to exit...")

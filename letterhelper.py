@@ -35,3 +35,5 @@ for i in range(0,num_letters):
     print "Letter " + str(i+1) + " generated.\n"
 
     index += 2
+
+input("Press any key to exit...")
